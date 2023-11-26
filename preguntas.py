@@ -30,8 +30,6 @@ def pregunta_01():
     # Retorne x y y
     return x_poly, data.y
 
-pregunta_01()
-
 
 def pregunta_02():
 
@@ -71,5 +69,3 @@ def pregunta_02():
         params = params - learning_rate * gradient
 
     return params
-
-pregunta_02()
