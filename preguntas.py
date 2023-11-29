@@ -33,16 +33,6 @@ def pregunta_01():
 
 def pregunta_02():
 
-    def gradiente(polinomio, error):
-  
-      grad2 = -2 * sum([error * x_value[0] for error, x_value in zip(error, polinomio)])
-      grad1 = -2 * sum([error * x_value[1] for error, x_value in zip(error, polinomio)])
-      grad0 = -2 * sum([error * x_value[2] for error, x_value in zip(error, polinomio)])
-      array = np.array( [grad2,grad1, grad0])
-
-      return array
-
-
     # Importe numpy
     import numpy as np
 
@@ -53,17 +43,17 @@ def pregunta_02():
     n_iterations = 1000
 
     # Defina el parámetro inicial `params` como un arreglo de tamaño 3 con ceros
-    params = np.zeros(x_poly.shape[1])
-    for epoch in range(n_iterations):
+    params = np.zeros(3)
+    for _ in range(n_iterations):
 
         # Compute el pronóstico con los parámetros actuales
-        y_pred = np.dot(x_poly,params)
+        y_pred = np.dot(x_poly, params)
 
         # Calcule el error
         error = y_pred - y
 
         # Calcule el gradiente
-        gradient = gradiente(x_poly,error)
+        gradient = np.dot(x_poly.T, error)
 
         # Actualice los parámetros
         params = params - learning_rate * gradient
